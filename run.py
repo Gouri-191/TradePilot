@@ -3,7 +3,7 @@
 TradePilot - Unified Single-File Execution Runner
 ==================================================
 Runs the complete TradePilot platform in a single process:
-  - Delta Exchange Testnet API Integration (Key: HIErDiqRn1ofpsHENrQTCfIsmxMTDb)
+  - Delta Exchange API Integration (configured via .env)
   - 10-Point Mandatory Risk Management & Circuit Breakers
   - 10-Second Pending Order Grace Period Matching Engine
   - Virtual Double-Entry Token Ledger (1 Token = ₹1,000 Nominal)
@@ -79,8 +79,9 @@ def main():
 
     # Load and print configuration summary
     from backend.app.config import settings
+    masked_key = f"{settings.DELTA_API_KEY[:4]}...{settings.DELTA_API_KEY[-4:]}" if settings.DELTA_API_KEY and len(settings.DELTA_API_KEY) > 8 else ("Custom Key Loaded" if settings.DELTA_API_KEY else "Not Configured (Demo Mode)")
     print(f"  [+] Target Exchange:  Delta Exchange Testnet")
-    print(f"  [+] API Key:          {settings.DELTA_API_KEY[:6]}...{settings.DELTA_API_KEY[-4:]}")
+    print(f"  [+] API Key:          {masked_key}")
     print(f"  [+] Risk Cap:         {settings.DEFAULT_RISK_PER_TRADE_PCT}% per trade | {settings.MAX_DAILY_LOSS_PCT}% daily circuit breaker")
     print(f"  [+] Grace Window:     {settings.DEFAULT_GRACE_PERIOD_SECONDS} seconds cancel/edit protection")
     print(f"  [+] Virtual Wallet:   Double-entry ledger (1 Token = ₹1,000 nominal)")

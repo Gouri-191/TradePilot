@@ -103,6 +103,26 @@ Every automated and assisted trade proposal must pass through a strict backend-e
 
 ---
 
+## 🔑 API Key & User Configuration
+
+TradePilot is designed to work with Delta Exchange and Delta Exchange Testnet. **Users must supply their own API keys**:
+
+1. Copy `.env.example` to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+2. Open `.env` and enter your Delta Exchange API credentials:
+   ```env
+   DELTA_API_KEY=your_delta_exchange_api_key_here
+   DELTA_API_SECRET=your_delta_exchange_api_secret_here
+   ENVIRONMENT=testnet
+   ```
+   > **How to get keys:** Sign up or log into [https://testnet.delta.exchange](https://testnet.delta.exchange), head to `Settings -> API Keys`, and generate your testnet key.
+   >
+   > **Security Notice:** Never commit your `.env` file or private credentials to GitHub. The project includes a pre-configured `.gitignore` to protect sensitive local files.
+
+---
+
 ## 🚀 One-Click Execution (Single File Runner)
 
 You can launch the complete TradePilot platform (FastAPI backend + Delta Exchange Testnet integration + Glassmorphic React frontend) with **one single command**:
@@ -112,11 +132,11 @@ python run.py
 ```
 
 This single runner:
-1. Verifies the Delta Exchange API Key (`HIErDiqRn1ofpsHENrQTCfIsmxMTDb`).
+1. Loads user environment configuration from `.env`.
 2. Initializes the database tables and genesis token ledger.
 3. Verifies the pre-built glassmorphic React frontend in `frontend/dist/`.
 4. Starts the unified server on `http://localhost:8000`.
-5. Automatically opens your default web browser to the TradePilot dashboard!
+5. Automatically opens your default web browser to the TradePilot login screen!
 
 ---
 

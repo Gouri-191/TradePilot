@@ -11,7 +11,7 @@ class Settings(BaseSettings):
     # Delta Exchange Testnet Endpoints
     DELTA_TESTNET_API_URL: str = "https://cdn.testnet.delta.exchange"
     DELTA_TESTNET_ORDER_URL: str = "https://api.testnet.delta.exchange"
-    DELTA_API_KEY: Optional[str] = "HIErDiqRn1ofpsHENrQTCfIsmxMTDb"
+    DELTA_API_KEY: Optional[str] = None
     DELTA_API_SECRET: Optional[str] = None
     
     # System Risk Limits
